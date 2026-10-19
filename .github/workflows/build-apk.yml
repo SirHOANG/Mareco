@@ -1,0 +1,38 @@
+# Builds the APK in the cloud (free on GitHub) so a low-RAM PC does not have to.
+# Push this project to GitHub, open the "Actions" tab, run "Build APK", then download the artifact.
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Accept Android SDK licenses
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
+      - name: Unit tests
+        run: |
+          chmod +x gradlew
+          ./gradlew testDebugUnitTest --no-daemon
+
+      - name: Build debug and release APKs
+        run: ./gradlew assembleDebug assembleRelease --no-daemon
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Mareco-apk
+          path: app/build/outputs/apk/**/*.apk

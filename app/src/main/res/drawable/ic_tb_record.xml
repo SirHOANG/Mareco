@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The record button of the floating bar (Record mode): the same blue ring as the play / stop buttons,
+     with a red record dot inside. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#3B6FE0"
+        android:strokeWidth="2"
+        android:pathData="M3.4,12a8.6,8.6 0 1,0 17.2,0a8.6,8.6 0 1,0 -17.2,0z" />
+    <path
+        android:fillColor="#FF5A5A"
+        android:pathData="M7.4,12a4.6,4.6 0 1,0 9.2,0a4.6,4.6 0 1,0 -9.2,0z" />
+</vector>

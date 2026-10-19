@@ -1,0 +1,872 @@
+================================================================================
+ MARECO - COMPLETE REQUIREMENTS (so nothing from the original prompt is missed)
+================================================================================
+ PART 1 = the original spec, word for word
+ PART 2 = the follow-up message about the overlay, word for word
+ PART 3 = what the 4 reference images show
+ PART 4 = the follow-up turned into a checklist
+ PART 5 = build requirements
+ PART 6 = where each requirement lives in the code
+ PART 7 = the third message (X button, new blue button, Start Recording only shows the bar, 100 languages)
+ PART 8 = the fourth message (a record button instead of the play button in REC mode)
+================================================================================
+
+
+################################################################################
+# PART 1 - ORIGINAL SPEC (verbatim)
+################################################################################
+
+# Mareco — Mobile Operation Recorder
+
+I want to build a **new-generation mobile macro/operation recorder app** called **Mareco**.
+
+The development environment is **Windows**, but the final application is intended to run on **Android mobile devices**.
+
+Mareco is inspired by the **Operation Recorder / Macro Recorder** features found in Android emulators such as **LDPlayer, MuMu Player, and BlueStacks**. Instead of requiring users to install a separate autoclicker app from the Play Store, Mareco should provide a more complete operation-recording experience in one application.
+
+The main purpose is to record a user's physical interactions with the device—such as taps, clicks, swipes, and supported key presses—and replay those actions automatically.
+
+The goal is to make Mareco useful for repetitive tasks where the user wants to automate the same sequence of actions repeatedly.
+
+## Core Concept
+
+Mareco should work like this:
+
+**Record → Stop → Configure → Execute**
+
+Example:
+
+1. Open Mareco.
+2. Press **Start Recording**.
+3. Perform actions normally on the phone.
+4. Mareco records the user's supported touch/input actions.
+5. Press **Stop Recording**.
+6. Open the **Settings / Gear** button.
+7. Configure execution settings.
+8. Press **Run**.
+9. Mareco replays the recorded sequence automatically.
+
+---
+
+# Core Features
+
+## 1. Input Recording
+
+Mareco should record supported user interactions in real time.
+
+The recorder should be able to capture:
+
+* Tap
+* Long press
+* Swipe
+* Drag
+* Touch coordinates
+* Touch duration
+* Delay between actions
+* Multiple consecutive touches
+* Supported physical key presses
+* Action order
+
+Each action should be stored as a structured event rather than simply recording the screen.
+
+For example:
+
+```text
+Tap X: 500 Y: 800
+Wait: 500 ms
+Swipe X1: 300 Y1: 700 → X2: 700 Y2: 700
+Wait: 1000 ms
+Tap X: 900 Y: 150
+```
+
+The recorder should preserve the original timing between actions whenever possible.
+
+---
+
+# 2. Recording Controls
+
+The main interface should have a simple and beginner-friendly control panel.
+
+Required buttons:
+
+### Start Recording
+
+Begins recording supported user input.
+
+### Stop Recording
+
+Stops the current recording and saves it as a macro.
+
+### Settings / Gear
+
+Opens the configuration screen after a recording has been created.
+
+### Run / Execute
+
+Starts replaying the recorded macro.
+
+### Pause
+
+Temporarily pauses macro execution.
+
+### Stop Execution
+
+Immediately stops the currently running macro.
+
+The UI should clearly show whether Mareco is currently:
+
+```text
+IDLE
+RECORDING
+READY
+RUNNING
+PAUSED
+STOPPED
+```
+
+---
+
+# 3. Macro Timeline / Editor
+
+After recording, show the recorded actions in a timeline.
+
+Example:
+
+```text
+Macro: Farming Loop
+
+01  Tap       (500, 800)
+02  Wait      500 ms
+03  Swipe     (300,700) → (700,700)
+04  Wait      1.0 sec
+05  Tap       (900,150)
+06  Wait      2.0 sec
+```
+
+Users should be able to:
+
+* View recorded actions
+* Delete an action
+* Edit an action
+* Change delays
+* Change coordinates when supported
+* Reorder actions
+* Add a delay
+* Duplicate an action
+* Clear the entire recording
+
+This would make Mareco much more powerful than a basic autoclicker.
+
+---
+
+# 4. Execution Settings
+
+After finishing a recording, the user should be able to configure how the macro executes.
+
+Create an **Execution Settings** screen.
+
+## Stop Condition
+
+Provide two modes:
+
+### Execution Count / Time
+
+Allow the user to specify how many times the macro should execute.
+
+Example:
+
+```text
+Executions: 10
+```
+
+or, if implementing time-based execution:
+
+```text
+Run for: 30 minutes
+```
+
+### Infinite
+
+The macro continues running indefinitely until the user manually presses **Stop**.
+
+---
+
+# 5. Execution Speed
+
+Add an **Execution Speed** setting.
+
+This controls how quickly recorded actions are replayed.
+
+Example:
+
+```text
+Execution Speed
+
+0.5x
+1.0x   ← Default
+1.5x
+2.0x
+5.0x
+10x
+```
+
+At **1.0x**, Mareco should attempt to reproduce the original timing.
+
+At higher speeds, delays between actions can be reduced.
+
+The app should prevent unsafe or impossible timing values that the Android input system cannot reliably execute.
+
+---
+
+# 6. Simulate Execution
+
+Add:
+
+**Simulate Execution**
+
+Description:
+
+> Mimics the original recorded click and touch behavior as closely as possible.
+
+This should be **enabled by default**.
+
+The goal is to make replayed actions behave as naturally as possible instead of simply firing actions as quickly as the system allows.
+
+---
+
+# 7. Macro Profiles
+
+Allow users to save multiple macros.
+
+Example:
+
+```text
+My Macros
+
+├── Farming
+├── Daily Quest
+├── Login Routine
+├── Resource Collection
+└── Test Macro
+```
+
+Each macro should have:
+
+* Name
+* Description
+* Creation date
+* Last modified date
+* Number of actions
+* Execution settings
+
+Users should be able to:
+
+* Create
+* Rename
+* Duplicate
+* Delete
+* Export
+* Import
+
+macros.
+
+---
+
+# 8. Macro Import / Export
+
+Create a simple macro file format.
+
+For example:
+
+```text
+.mareco
+```
+
+The format should contain:
+
+* Device/display information
+* Recorded actions
+* Coordinates
+* Timing information
+* Execution settings
+* Macro metadata
+
+Example structure:
+
+```json
+{
+  "name": "Farming Macro",
+  "version": 1,
+  "actions": [
+    {
+      "type": "tap",
+      "x": 500,
+      "y": 800,
+      "delay": 500
+    }
+  ],
+  "execution": {
+    "mode": "infinite",
+    "speed": 1.0,
+    "simulate": true
+  }
+}
+```
+
+---
+
+# 9. Device / Screen Compatibility
+
+Because Android devices have different resolutions and aspect ratios, Mareco should consider coordinate scaling.
+
+For example:
+
+```text
+Recorded on:
+1080 × 2400
+
+Current device:
+720 × 1600
+```
+
+Mareco should optionally scale coordinates proportionally.
+
+Provide a setting such as:
+
+**Coordinate Scaling**
+
+* Original coordinates
+* Scale to current screen
+* Preserve aspect ratio
+
+Also warn users when the current screen resolution is significantly different from the recording device.
+
+---
+
+# 10. Delay Configuration
+
+Allow users to configure delays between actions.
+
+For example:
+
+```text
+Action Delay
+
+Original
+500 ms
+
+Custom:
+1000 ms
+```
+
+Add optional:
+
+**Randomized Delay**
+
+This can slightly vary delays around the configured value.
+
+Example:
+
+```text
+Base delay: 1000 ms
+Random range: ±200 ms
+```
+
+This should be optional and disabled by default.
+
+---
+
+# 11. Safety Features
+
+Mareco should always provide an easy way to stop automation.
+
+Add:
+
+### Emergency Stop
+
+A clearly accessible **STOP** control should immediately terminate macro execution.
+
+Also consider:
+
+* Stop when the app loses permission
+* Stop when the screen turns off
+* Optional maximum execution time
+* Optional maximum execution count
+* Confirmation before starting an infinite macro
+* Prevent accidental execution from the settings screen
+
+The user should always be able to regain control of the device.
+
+---
+
+# 12. Permission Setup
+
+If Android requires accessibility or other system permissions for input automation, Mareco should provide a beginner-friendly setup screen.
+
+Example:
+
+```text
+Mareco Setup
+
+✓ Application installed
+
+⚠ Accessibility permission required
+
+[Open Android Settings]
+
+After enabling the permission:
+
+[Check Permission Again]
+```
+
+Do not silently request or bypass Android security restrictions.
+
+Explain clearly what each permission is used for.
+
+---
+
+# 13. Recording Overlay
+
+While recording, provide a small floating control overlay where Android permits it.
+
+Example:
+
+```text
+┌──────────────────────┐
+│ 🔴 RECORDING  00:13 │
+│                      │
+│ [ STOP ]             │
+└──────────────────────┘
+```
+
+The overlay should avoid interfering with the application being recorded.
+
+---
+
+# 14. Macro Execution Overlay
+
+While a macro is running, show a small status indicator:
+
+```text
+Mareco
+
+Running: Farming Macro
+
+Loop: 24 / ∞
+Speed: 1.0x
+
+[ PAUSE ] [ STOP ]
+```
+
+The overlay should be minimal and unobtrusive.
+
+---
+
+# 15. Beginner-Friendly UI
+
+The application should NOT look like a complicated developer tool.
+
+Use a clean mobile interface with large buttons.
+
+Main screen example:
+
+```text
+┌─────────────────────────────┐
+│           MARECO             │
+│   Mobile Operation Recorder  │
+├─────────────────────────────┤
+│                             │
+│      🎥 Start Recording      │
+│                             │
+│      ▶ Run Macro             │
+│                             │
+│      📁 My Macros            │
+│                             │
+│      ⚙ Settings              │
+│                             │
+└─────────────────────────────┘
+```
+
+Use clear terminology so a normal Android user can understand the application without technical knowledge.
+
+---
+
+# 16. Suggested Advanced Features
+
+If practical, consider adding these features in later versions:
+
+### Macro Editor
+
+Visually edit the recorded timeline.
+
+### Loop Delay
+
+Add a configurable delay between complete macro loops.
+
+```text
+Loop Delay: 2 seconds
+```
+
+### Action Groups
+
+Allow users to group actions together.
+
+```text
+[Login]
+   ├── Tap
+   ├── Wait
+   └── Tap
+
+[Farm]
+   ├── Swipe
+   ├── Tap
+   └── Wait
+```
+
+### Conditional Execution
+
+If technically possible within Android's permitted APIs, support simple conditions such as:
+
+```text
+Wait until screen state changes
+Wait for a specified duration
+Stop after timeout
+```
+
+Do not implement unrestricted screen manipulation or security bypasses.
+
+### Macro Statistics
+
+Show:
+
+```text
+Total Actions: 42
+Total Runtime: 03:21
+Executions: 128
+```
+
+### Presets
+
+Provide presets such as:
+
+```text
+Slow
+Normal
+Fast
+Custom
+```
+
+### Dark Mode
+
+Support both:
+
+* Light mode
+* Dark mode
+
+### Haptic Feedback
+
+Give subtle vibration feedback when:
+
+* Recording starts
+* Recording stops
+* Macro starts
+* Macro stops
+
+---
+
+# 17. Important Android Limitations
+
+Before implementing the system, investigate which Android APIs are officially available for:
+
+* Touch automation
+* AccessibilityService
+* Gesture dispatch
+* Floating overlays
+* Physical key events
+* Background execution
+* Screen resolution detection
+* Permission handling
+
+Do NOT assume that Android allows unrestricted global input injection.
+
+The implementation should use legitimate Android APIs and clearly explain limitations where necessary.
+
+If a feature cannot be implemented reliably on standard Android without root, ADB, or emulator-specific privileges, clearly separate it as an optional advanced feature rather than pretending it works universally.
+
+---
+
+# 18. Development Requirements
+
+I am developing the project on **Windows**.
+
+Make the development setup straightforward and suitable for a developer using a Windows PC.
+
+Prefer a lightweight architecture because the development machine has limited RAM.
+
+Avoid unnecessary heavyweight dependencies.
+
+Before writing a large amount of code:
+
+1. Design the architecture.
+2. Identify Android API limitations.
+3. Create the basic UI.
+4. Implement recording.
+5. Implement replay.
+6. Implement execution settings.
+7. Implement macro storage.
+8. Add the editor.
+9. Add advanced features afterward.
+
+Build the project incrementally so each stage can be tested on a real Android device.
+
+---
+
+# Product Goal
+
+Mareco should feel like a **mobile-native version of an emulator Operation Recorder**, rather than a basic Play Store autoclicker.
+
+The core experience should be:
+
+**Record your actions → configure the macro → replay them automatically.**
+
+The application should be:
+
+* Free
+* Simple
+* Lightweight
+* Beginner-friendly
+* Reliable
+* Transparent about Android permissions
+* Easy to configure
+* More flexible than a basic autoclicker
+
+The primary focus should be **macro recording and replay**, with advanced automation features added only when they are technically reliable and supported by Android.
+
+
+################################################################################
+# PART 2 - FOLLOW-UP MESSAGE ABOUT THE OVERLAY (verbatim, typos included)
+################################################################################
+
+and hey claude, 
+but why dont u add something similar to this? in my image i send u
+once you see a second image what would u gotta add for overlay?
+so we can use this from first image just to setup for marco for game afk grinding nonstop xd
+i forgot to tell u some feature from about overlay
+you should add from gear settings from overlay feature need to be add:
+when the person first time setup this marco they need to do setup first before start auto grinding
+the user click gear setting from overlay and then setup
+inside the gear settings there are some feature:
+
+1. the first one has 2 mode
+
+one: record marco mode
+record marco mode mean you want to setup this one to record for setups your marco
+two: start marco (idk what to say too hard for me to think in my mind)
+start marco mean you already setup your marco from saved settings when you already recorded your marco so you can set this one as default and change some settings
+also you must add some feature from maain setting from what you see is in first image "settings" add it for overlay setting too
+and next:
+after they done recording it asking you give a name and saved it for marco setup just like second image
+and in third image
+you must add button on this it when we already done marco setup we can now config this setup that what it has
+from the marco setting in fourth image u select "Explain" you can config it so yea once u done config it click the play button so yea! and it will start marco!
+
+and now! i want to make similar to the android app that from playstore that already have but it too pay2win it need us to pay without limit cause this one called "touch recorder" you may search information about this one and you will know
+
+and now go start building in a 1 week and saved the memory or turn my whole prompt to .txt to make sure you can remember it easily to not to miss anything from my prompt i need
+
+anddddddd make sure writing more with a huge amount of code if necessary. It should have no bugs or errors, use the newest version of Android Studio, and make sure Gradle syncs and builds without errors. Finally, build the APK successfully.
+because im using a new version of android studio i dont wanna use random old version because im tiring of bugs and build error so yea
+
+
+################################################################################
+# PART 3 - THE FOUR REFERENCE IMAGES
+################################################################################
+
+IMAGE 1 - floating toolbar (vertical, dark, rounded). Top to bottom:
+   blue PLAY triangle / green PLUS / orange curved ARROW / dark-red MINUS /
+   steel-blue GEAR (settings) / grey four-way MOVE arrows (drag handle).
+   >> CHANGED by PART 7: green PLUS, orange ARROW and dark-red MINUS were removed; an X (close) was added;
+      the blue button now also stops + saves a recording.
+
+IMAGE 2 - dialog "Record completed, saved as:" with a text field (default name
+   "MuMu Operation Recorder(1)", text selected, an X to clear) and two buttons:
+   [Save] (cyan) and [Don't save].
+
+IMAGE 3 - one row of the saved-macro list: name "explain", subtitle
+   "Executed 1 time(3 seconds) | 1280 x 720", then icons: execution settings
+   (sliders), edit (pencil), duplicate, share, delete (trash) and a big cyan PLAY button.
+
+IMAGE 4 - "Execution Settings" dialog:
+   Stop condition: [Infinitely until stopped v]
+   Loop interval:  [0] seconds
+   Execution speed: Execute [1 v] time
+   Other: [ ] Auto-execute upon starting the device
+          [ ] Simulate execution: mimic real click behavior
+   Buttons: [Save] (cyan)  [Cancel]
+
+
+################################################################################
+# PART 4 - THE FOLLOW-UP AS A CHECKLIST
+################################################################################
+
+[ ] Floating overlay toolbar like image 1, used to set up and run macros for
+    game AFK grinding (non-stop).
+[ ] Gear button of the overlay opens settings. First-time users set up here.
+[ ] Gear settings contain TWO MODES:
+      1. "Record macro" mode  = set up / record a new macro.
+      2. "Start macro" mode   = run an already recorded macro; it can be set as
+                                the DEFAULT macro and some settings can be changed.
+[ ] The overlay settings ALSO contain everything from the main app Settings.
+[ ] After recording stops: ask for a NAME and save it (image 2: Save / Don't save).
+[ ] Macro list rows like image 3, with a button to CONFIGURE the macro
+    (execution settings, image 4); after configuring, press PLAY to start.
+[ ] Execution Settings like image 4: stop condition, loop interval,
+    execution speed, auto-execute upon starting the device,
+    simulate execution (mimic real click behaviour).
+[ ] Be a FREE, no-limits alternative to the Play Store app "Touch Recorder"
+    (considered pay-to-win).
+[ ] Save the whole prompt as a .txt (this file) and in memory.
+[ ] Write a huge amount of code, no bugs / no errors.
+[ ] Newest Android Studio; Gradle sync + build with no errors; no old/random
+    versions; build the APK.
+
+
+################################################################################
+# PART 5 - BUILD REQUIREMENTS / DECISIONS
+################################################################################
+
+- Android Studio: latest stable (Quail 4 2026.1.4 or Rabbit 1 2026.2.1 or newer)
+- Android Gradle Plugin 9.4.0, Gradle 9.6.0, JDK 17+ (Studio's bundled JDK is fine)
+- compileSdk 37, targetSdk 37, minSdk 26 (Android 8.0+)
+- Kotlin via AGP built-in Kotlin (no kotlin-android plugin)
+- ZERO runtime dependencies (plain Android framework APIs) -> small, light, nothing to break
+- Windows-friendly: open the folder in Android Studio, or run gradlew.bat assembleDebug
+- Low RAM: Gradle heap capped at 2 GB; optional GitHub Actions cloud build included
+
+
+################################################################################
+# PART 6 - WHERE EACH REQUIREMENT LIVES (see README.md for more)
+################################################################################
+
+Floating toolbar ............ service/ToolbarView.kt, service/OverlayManager.kt
+Gear panel, 2 modes ......... service/OverlayPanels.kt (+ ui/SettingsView.kt = same settings as the app)
+Recording ................... service/CaptureView.kt, core/TraceRecorder.kt, service/MarecoController.kt
+Name + save prompt .......... ui/PromptActivity.kt (falls back to an overlay dialog)
+Macro rows (image 3) ........ ui/MacroRow.kt
+Execution Settings (image 4)  ui/Dialogs.kt -> executionSettings()
+Replay engine ............... core/MacroRunner.kt, core/GesturePlanner.kt, core/Timing.kt
+Timeline editor ............. ui/EditorScreen.kt
+.mareco format .............. data/MacroCodec.kt, data/MacroRepository.kt
+Coordinate scaling .......... core/Scaler.kt
+Permission setup ............ ui/SetupScreen.kt
+Safety ...................... service/MarecoController.kt, data/AppSettings.kt
+Unit tests .................. app/src/test (64 tests)
+
+
+################################################################################
+# PART 7 - THIRD MESSAGE, sent after the first APK was tested on the phone (verbatim, typos included)
+################################################################################
+
+omg i tested it and it worked! nice i done testing of your apk 100% good
+and continue ur mission and i got a smth you need to change also!
+read some information in the first image and then add "X" button for close floating
+for my required in second image:
+you need to do show a floating first for the start recording and do dont record first we will record for our choice we just need open game first so we can start recording anytime!
+and third required: add language support!
+since english is not our first language we speak, you must do support 100 language and make the system set default when it your language set by the system like for explain: my language default is vietnamese and the app will do the same to set a default to help user marco better understand
+so you dont have to over again to go to google lens translate wasting your time
+now continue your mission
+
+The annotations on the first image (the floating bar):
+   - cyan arrow at the blue PLAY button: "change: for the marco recorder mode when you done recording
+     click that button to stop it and save"
+   - red box around the green PLUS, orange ARROW and dark-red MINUS: "remove these no need this cause
+     those feature are only for autoclicker we dont need it"
+
+
+################################################################################
+# PART 7b - THE THIRD MESSAGE AS A CHECKLIST (all done in the code; see "honest status" below)
+################################################################################
+
+[x] FLOATING BAR
+      [x] In Record macro mode the BLUE button stops the recording and saves it (asks for the name) when pressed after recording.
+      [x] REMOVED: green plus, orange curved arrow, dark-red minus (autoclicker-only features).
+      [x] ADDED: an "X" button that closes the floating bar.
+[x] "START RECORDING" (home screen) only shows the floating bar. It does NOT record. The user opens the game first and
+    presses the blue play button on the bar whenever they want to start recording.
+[x] LANGUAGES: 100 languages + English = 101. The app starts in the phone's language (phone set to Vietnamese ->
+    Mareco in Vietnamese); users never need Google Lens.
+      [x] Settings > Language (and the globe button on Home) to pick another language; "System default" goes back.
+      [x] Android 13+ "App languages" entry for Mareco (res/xml/locales_config.xml).
+      [x] Right-to-left layout for Arabic, Hebrew, Persian, Urdu, Pashto, Sindhi, Uyghur.
+      [x] The floating bar, gear panel, name prompt and toasts use the same language as the app (the crash screen
+          follows the phone's language, on purpose: it runs in its own process and stays as simple as possible).
+
+
+################################################################################
+# PART 7c - HOW THE FLOATING BAR BEHAVES NOW
+################################################################################
+
+X ............ closes the bar (the app brings it back). Dimmed and refuses ("stop first") while recording / running.
+Blue button .. Record mode: record dot = start recording (after the countdown); stop square = finish + save + name prompt.
+                              (PART 8: the play triangle was replaced by the record dot in this mode.)
+               Start mode:  play triangle = run the default macro; stop square = stop it.
+               During the countdown the stop square cancels.
+Hold blue .... pause / resume (recording or running). Hold while paused = stop (a recording is saved).
+Gear ......... mode (Record macro / Start macro), default macro, execution settings, every app setting incl. Language,
+               and a "Start recording" button.
+Four arrows .. drag handle.
+Emergency stop: blue stop square, the STOP button in the app, or Volume Up + Volume Down together.
+
+
+################################################################################
+# PART 7d - WHERE THE PART 7 REQUIREMENTS LIVE
+################################################################################
+
+Floating bar (X / blue / gear / move) ... service/ToolbarView.kt, service/MarecoController.kt
+                                          (onPlay, onPlayLong, onClose, armRecording), service/OverlayManager.kt
+"Start Recording" shows the bar only .... ui/HomeScreen.kt + ui/MainActivity.kt -> MarecoController.armRecording()
+English texts ............................ app/src/main/res/values/strings.xml (364 strings)
+100 translations ......................... app/src/main/res/values-<code>/strings.xml
+Language list / picker / override ........ Languages.kt (generated), Lang.kt, ui/Dialogs.kt languagePicker(),
+                                          ui/SettingsView.kt (Settings > Language), data/AppSettings.kt (language)
+Android 13+ per-app language ............. res/xml/locales_config.xml (generated), android:localeConfig in the manifest
+Translation tooling ...................... tools/i18n.py, tools/languages.tsv  (python tools\i18n.py audit)
+Tests .................................... app/src/test/.../StringsTest.kt (every language: same keys, same placeholders,
+                                          same line breaks, phone locale -> language mapping)
+
+
+################################################################################
+# PART 7e - HONEST STATUS
+################################################################################
+
+- Everything above was compiled, unit-tested (64 tests), dex-checked and signed in a cloud sandbox with the real SDK tools
+  (aapt2, kotlinc, D8, R8, apksigner). The sandbox has no Gradle build and no phone, so the new bar behaviour and
+  the language switching have NOT been run on a device by the author - only the user can confirm them.
+- The APK is signed with the same key as the first APK, so it installs over it and keeps the saved macros.
+- Translations: English is the original. Every translation is an AI-written first draft (Vietnamese got the most careful
+  pass). They are checked automatically for structure, but no native speaker has proofread them; the smaller
+  languages are the least reliable. Android falls back to English for any text that is missing.
+
+
+################################################################################
+# PART 8 - FOURTH MESSAGE (verbatim)
+################################################################################
+
+replace the play button with a record button when its in REC mode
+
+[x] In REC mode (Record macro mode) the main button of the floating bar is a RECORD button instead of the play triangle.
+      idle in Record mode ........ record button (blue ring with a red dot): press = start recording
+      recording .................. stop square: press = stop + save + name prompt, hold = pause
+      recording paused ........... record button again: press = resume, hold = stop + save
+      idle in Start macro mode ... play triangle: press = run the default macro
+      macro running .............. stop square (press = stop, hold = pause); macro paused = play triangle (press = resume)
+      countdown .................. stop square (press = cancel)
+[x] After a recording is saved the bar switches to Start macro mode (play triangle), as before.
+[x] The help texts (English + all 100 translations) now show the record dot instead of the play triangle wherever they
+    talk about starting a recording; the play triangle stays where they talk about running a macro.
+
+WHERE: service/ToolbarView.kt (render), core/BarSymbols.kt (the rule; unit-tested in BarSymbolsTest),
+       res/drawable/ic_tb_record.xml (the icon), res/values*/strings.xml (help texts)
+STATUS: compiled and unit-tested in the sandbox (64 tests); the icon was rendered and checked on a mock bar.
+        Not run on a phone by the author.

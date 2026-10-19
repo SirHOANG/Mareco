@@ -1,0 +1,104 @@
+# Every language Mareco is meant to support, in the order of the language list.
+# tag (BCP-47) <TAB> name in its own language <TAB> resource qualifier (values-<qualifier>; empty = the default values/ folder)
+# `python3 tools/i18n.py sync` copies the languages that already have a translation into Languages.kt and res/xml/locales_config.xml.
+en	English	
+vi	Tiếng Việt	vi
+zh-CN	简体中文	zh-rCN
+zh-TW	繁體中文	zh-rTW
+es	Español	es
+hi	हिन्दी	hi
+ar	العربية	ar
+bn	বাংলা	bn
+pt-BR	Português (Brasil)	pt
+pt-PT	Português (Portugal)	pt-rPT
+ru	Русский	ru
+ja	日本語	ja
+de	Deutsch	de
+fr	Français	fr
+ko	한국어	ko
+tr	Türkçe	tr
+it	Italiano	it
+th	ไทย	th
+id	Bahasa Indonesia	in
+ms	Bahasa Melayu	ms
+fil	Filipino	fil
+pl	Polski	pl
+uk	Українська	uk
+nl	Nederlands	nl
+ro	Română	ro
+el	Ελληνικά	el
+cs	Čeština	cs
+sv	Svenska	sv
+hu	Magyar	hu
+bg	Български	bg
+da	Dansk	da
+fi	Suomi	fi
+nb	Norsk bokmål	nb
+sk	Slovenčina	sk
+hr	Hrvatski	hr
+sr	Српски	sr
+sl	Slovenščina	sl
+lt	Lietuvių	lt
+lv	Latviešu	lv
+et	Eesti	et
+he	עברית	iw
+fa	فارسی	fa
+ur	اردو	ur
+ta	தமிழ்	ta
+te	తెలుగు	te
+mr	मराठी	mr
+gu	ગુજરાતી	gu
+kn	ಕನ್ನಡ	kn
+ml	മലയാളം	ml
+pa	ਪੰਜਾਬੀ	pa
+or	ଓଡ଼ିଆ	or
+as	অসমীয়া	as
+ne	नेपाली	ne
+si	සිංහල	si
+my	မြန်မာ	my
+km	ខ្មែរ	km
+lo	ລາວ	lo
+ka	ქართული	ka
+hy	Հայերեն	hy
+az	Azərbaycan dili	az
+kk	Қазақ тілі	kk
+uz	Oʻzbek tili	uz
+ky	Кыргызча	ky
+tg	Тоҷикӣ	tg
+tk	Türkmençe	tk
+mn	Монгол	mn
+be	Беларуская	be
+mk	Македонски	mk
+sq	Shqip	sq
+bs	Bosanski	bs
+is	Íslenska	is
+ga	Gaeilge	ga
+cy	Cymraeg	cy
+gd	Gàidhlig	gd
+eu	Euskara	eu
+ca	Català	ca
+gl	Galego	gl
+mt	Malti	mt
+lb	Lëtzebuergesch	lb
+af	Afrikaans	af
+sw	Kiswahili	sw
+zu	isiZulu	zu
+xh	isiXhosa	xh
+am	አማርኛ	am
+ha	Hausa	ha
+yo	Yorùbá	yo
+ig	Igbo	ig
+so	Soomaali	so
+mg	Malagasy	mg
+rw	Kinyarwanda	rw
+sn	chiShona	sn
+st	Sesotho	st
+ps	پښتو	ps
+ku	Kurdî	ku
+sd	سنڌي	sd
+ug	ئۇيغۇرچە	ug
+eo	Esperanto	eo
+ceb	Cebuano	ceb
+jv	Basa Jawa	jv
+su	Basa Sunda	su
+ht	Kreyòl ayisyen	ht

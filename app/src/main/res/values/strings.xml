@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Mareco: every text shown in the app lives here, so it can be translated.
+
+  Rules for translators (also checked by the unit test StringsTest):
+   - Keep every placeholder (%s, %1$s, %2$s ...) and the symbols ▶ ■ ● → · … × ±.
+   - Placeholders may be moved or re-ordered (use %1$s / %2$s) but never removed.
+   - Do not use the straight quote characters ' and " inside a text: use ’ and “ ” (or your language's quotes).
+   - \n means a new line. %% means a literal percent sign.
+   - Keep short labels short: they have to fit on small buttons.
+-->
+<resources>
+
+    <!-- ===== App ===== -->
+    <string name="app_name" translatable="false">Mareco</string>
+    <!-- Name of the accessibility service in Android Settings. Keep the word Mareco. -->
+    <string name="service_label">Mareco Macro Recorder</string>
+    <!-- Shown in Android Settings under the service name. -->
+    <string name="a11y_service_description">Lets Mareco record your taps and swipes and replay them for you. It only performs the gestures you recorded, cannot read what is on your screen, and the app has no internet access.</string>
+
+    <!-- ===== Common ===== -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="copy">Copy</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="share">Share</string>
+    <string name="start">Start</string>
+    <!-- Hint inside an empty text field where a macro name is typed -->
+    <string name="name_hint">Name</string>
+    <string name="custom">Custom</string>
+    <string name="toast_copied">Copied</string>
+    <string name="toast_saved">Saved.</string>
+    <string name="unknown_error">unknown error</string>
+    <!-- Quotation marks around a name, for example “Macro 1”. Use your language's quote style. -->
+    <string name="fmt_quoted">“%s”</string>
+    <!-- [group] Short unit labels that appear next to number fields -->
+    <string name="unit_min">min</string>
+    <string name="unit_s">s</string>
+    <!-- [group] Durations. %s is a number. -->
+    <string name="fmt_s">%s s</string>
+    <string name="fmt_min">%s min</string>
+    <string name="fmt_min_s">%1$s min %2$s s</string>
+    <string name="fmt_h_min">%1$s h %2$s min</string>
+    <string name="sec_off">Off</string>
+
+    <!-- ===== Floating bar (the small vertical bar over your game) ===== -->
+    <!-- [group] Name of each button: spoken by screen readers and shown when you long-press a button. -->
+    <string name="bar_cd_record">Start recording</string>
+    <string name="bar_cd_stop_save">Stop and save (hold to pause)</string>
+    <string name="bar_cd_run">Start macro</string>
+    <string name="bar_cd_stop">Stop (hold to pause)</string>
+    <string name="bar_cd_resume">Resume (hold to stop)</string>
+    <string name="bar_cd_cancel">Cancel the countdown</string>
+    <string name="bar_cd_settings">Settings</string>
+    <string name="bar_cd_move">Drag to move</string>
+    <string name="bar_cd_close">Close the floating controls</string>
+    <!-- [group] Tiny labels under the bar. VERY short: about 10 characters at most. -->
+    <string name="bar_mode_rec">REC mode</string>
+    <string name="bar_mode_run">RUN mode</string>
+    <string name="bar_stopped">stopped</string>
+    <string name="bar_get_ready">get ready</string>
+    <string name="bar_paused">PAUSED</string>
+    <string name="bar_rec">● REC</string>
+    <!-- Message shown when you tap the status area of the bar. %1$s = time like 00:12, %2$s = a number -->
+    <string name="status_recording">Recording · %1$s · Steps: %2$s</string>
+    <string name="status_recording_paused">Recording paused · %1$s · Steps: %2$s</string>
+    <!-- %1$s = macro name, %2$s = run counter like 3/10, %3$s = speed like 1.5x -->
+    <string name="status_running">Running: %1$s · Run %2$s · %3$s</string>
+    <string name="status_paused">Paused: %1$s · Run %2$s</string>
+    <!-- %s = macro name -->
+    <string name="status_ready">Ready: %s</string>
+    <string name="status_no_macro">No macro yet. Record one first.</string>
+
+    <!-- ===== Messages ===== -->
+    <string name="toast_rotated">Screen rotated: recording finished.</string>
+    <string name="toast_stop_first">Stop the current recording or macro first.</string>
+    <string name="toast_bar_failed">Could not show the floating controls. Is the accessibility service on?</string>
+    <string name="toast_bar_ready_record">The floating controls are ready. Open your game, then press the blue ● button when you want to start recording.</string>
+    <string name="toast_cancelled">Cancelled.</string>
+    <!-- %s = a time like “3 s” -->
+    <string name="toast_rec_starts">Recording starts in %s.</string>
+    <string name="toast_rec_failed">Could not start recording. Is the accessibility service on?</string>
+    <string name="toast_rec_paused">Recording paused: touches go to the app but are not recorded.</string>
+    <string name="toast_rec_resumed">Recording resumed.</string>
+    <string name="toast_nothing_recorded">Nothing was recorded.</string>
+    <string name="toast_discarded">Recording discarded.</string>
+    <!-- %s = macro name -->
+    <string name="toast_saved_macro">Saved “%s”. Press the blue ▶ to run it.</string>
+    <string name="toast_no_macro_run">No macro selected. Record one first, or pick one in Settings.</string>
+    <string name="toast_no_steps">This macro has no taps or swipes to run.</string>
+    <!-- %1$s = macro name, %2$s = a time like “3 s” -->
+    <string name="toast_starting">Starting “%1$s” in %2$s</string>
+    <string name="toast_interrupted">Paused: your touches keep interrupting the macro. Press ▶ to continue.</string>
+    <string name="toast_auto">Auto-execute: starting “%s”. Press ■ to cancel.</string>
+    <string name="toast_service_failed">Mareco could not start its service. Open Mareco to see why.</string>
+    <string name="toast_panel_failed">Could not open the panel. Is the accessibility service on?</string>
+    <string name="toast_a11y_manual">Open Android Settings → Accessibility manually.</string>
+    <string name="toast_appinfo_manual">Open Android Settings → Apps → Mareco manually.</string>
+    <string name="toast_record_first">Record a macro first.</string>
+    <string name="toast_pos_reset">Position reset.</string>
+    <string name="toast_select_step">Tap a step in the list first.</string>
+    <string name="toast_duplicated">Duplicated.</string>
+    <!-- %s = macro name -->
+    <string name="toast_default_set">“%s” is now the default macro.</string>
+    <string name="toast_perm_on">Permission is on. You are ready.</string>
+    <string name="toast_perm_off">Not enabled yet.</string>
+    <string name="toast_no_picker">No file picker found on this phone.</string>
+    <!-- %s = the reason -->
+    <string name="toast_save_failed">Could not save: %s</string>
+    <string name="toast_share_failed">Could not share: %s</string>
+    <string name="toast_import_failed">Could not import: %s</string>
+    <string name="toast_import_ok">Imported “%s”.</string>
+    <string name="toast_screen_error">Something went wrong (%s). Details were saved.</string>
+    <string name="import_cannot_open">Cannot open the file</string>
+    <string name="import_too_large">The file is too large</string>
+    <string name="import_invalid">This is not a valid Mareco macro file.</string>
+    <string name="import_not_mareco">This is not a Mareco macro file.</string>
+    <string name="import_newer">This macro was made by a newer version of Mareco.</string>
+    <string name="import_empty">The macro has no usable steps.</string>
+
+    <!-- [group] Why a macro stopped (shown on the home screen and as a message) -->
+    <string name="fin_done">Finished. Runs completed: %s.</string>
+    <string name="fin_user">Stopped.</string>
+    <string name="fin_time">Stopped: the time limit was reached.</string>
+    <string name="fin_safety_time">Stopped by the maximum run time in Settings.</string>
+    <string name="fin_safety_count">Stopped by the maximum executions in Settings.</string>
+    <string name="fin_error">Stopped: Android refused the gestures. Check that the accessibility service is on.</string>
+    <string name="fin_app_lost">Stopped: the app was not in front for 30 seconds.</string>
+    <string name="fin_screen_off">Stopped: the screen turned off.</string>
+    <string name="fin_service_lost">Stopped: the accessibility service was switched off.</string>
+    <!-- %s = a percentage number, then a literal percent sign -->
+    <string name="fin_battery">Stopped: the battery dropped below %s%%.</string>
+    <string name="fin_empty">Nothing to run: the macro has no taps or swipes.</string>
+
+    <!-- ===== Dialogs ===== -->
+    <!-- Shown right after a recording. A text box with a default name appears under it. -->
+    <string name="prompt_title">Record completed, saved as:</string>
+    <string name="prompt_discard">Don’t save</string>
+    <string name="dlg_rename_title">Rename macro</string>
+    <string name="dlg_desc_title">Description</string>
+    <!-- Start of default macro names such as “Macro 1”, “Macro 2” -->
+    <string name="default_macro_name">Macro</string>
+    <!-- Used in the name of a copied macro, for example “Farm (copy)” -->
+    <string name="copy_suffix">copy</string>
+    <string name="dlg_diff_screen">Different screen</string>
+    <string name="dlg_run_anyway">Run anyway</string>
+    <string name="dlg_forever_title">Run until stopped?</string>
+    <!-- %s = macro name -->
+    <string name="dlg_forever_msg">“%s” repeats forever. Stop it any time with the blue ■ on the floating bar, the Stop button in the app, or by pressing Volume Up and Volume Down together.</string>
+    <!-- %1$s and %2$s are the words portrait / landscape -->
+    <string name="warn_orientation">Recorded in %1$s but the screen is %2$s now. Rotate the phone back or taps will land in the wrong places.</string>
+    <!-- %1$s and %2$s are screen sizes like 1080 × 2400 -->
+    <string name="warn_size">Recorded on %1$s, this screen is %2$s. Coordinates will be scaled, so test it before leaving it unattended.</string>
+    <string name="warn_aspect">The screen shape (aspect ratio) is different, so scaled taps can be slightly off.</string>
+    <string name="orient_portrait">portrait</string>
+    <string name="orient_landscape">landscape</string>
+    <!-- %s = macro name -->
+    <string name="delete_title">Delete macro?</string>
+    <string name="delete_msg">“%s” will be removed from this phone.</string>
+
+    <!-- ===== Home screen ===== -->
+    <string name="home_tagline">Mobile Operation Recorder</string>
+    <string name="home_flow">Record → Stop → Configure → Execute</string>
+    <string name="home_setup_title">Setup required</string>
+    <string name="home_setup_body">Android only lets an app tap and swipe for you through its accessibility settings. It takes about a minute and is explained step by step.</string>
+    <string name="home_open_setup">Open setup</string>
+    <string name="home_service_starting">Starting the accessibility service… If this stays, open Setup.</string>
+    <!-- [group] Status names in capital letters (use capitals if your script has them) -->
+    <string name="state_idle">IDLE</string>
+    <string name="state_recording">RECORDING</string>
+    <string name="state_recording_paused">RECORDING · PAUSED</string>
+    <string name="state_ready">READY</string>
+    <string name="state_running">RUNNING</string>
+    <string name="state_paused">PAUSED</string>
+    <string name="state_stopped">STOPPED</string>
+    <!-- %1$s = time like 00:12, %2$s = a number -->
+    <string name="home_detail_recording">%1$s · Steps so far: %2$s</string>
+    <!-- %1$s = macro name, %2$s = run counter like 3/10, %3$s = speed like 1.5x -->
+    <string name="home_detail_running">%1$s · Run %2$s · %3$s</string>
+    <string name="home_idle_hint">Record your first macro to get started.</string>
+    <!-- %s = a number of seconds -->
+    <string name="home_countdown">Starting in %s…</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_resume">Resume</string>
+    <string name="btn_stop">STOP</string>
+    <string name="btn_stop_save">Stop and save</string>
+    <string name="home_start_rec">Start Recording</string>
+    <string name="home_start_rec_sub">The floating bar appears. Open your game, then press ● to start.</string>
+    <string name="home_run">Run Macro</string>
+    <string name="home_run_none">No macro yet</string>
+    <string name="home_macros">My Macros</string>
+    <!-- %s = a number -->
+    <string name="home_macros_count">Saved: %s</string>
+    <string name="home_settings">Settings</string>
+    <string name="home_settings_sub">Language, appearance, recording, safety</string>
+    <string name="home_bar_show">Show floating controls</string>
+    <string name="home_bar_hide">Hide floating controls</string>
+    <string name="home_bar_sub">The small bar you use on top of your game</string>
+    <string name="home_help">Help, tips and limitations</string>
+
+    <!-- ===== Setup screen ===== -->
+    <string name="setup_title">Mareco Setup</string>
+    <string name="setup_installed">Application installed</string>
+    <string name="setup_service_on">Accessibility service is on</string>
+    <string name="setup_all_set">You are all set. Open the floating controls and switch to your game.</string>
+    <string name="setup_switched_on">Accessibility service is switched on</string>
+    <string name="setup_waiting">Waiting for Android to start it… tap the button below in a moment.</string>
+    <string name="setup_check_again">Check Permission Again</string>
+    <string name="setup_required">Accessibility permission required</string>
+    <!-- Use the names Android itself uses in your language for “Installed apps” / “Downloaded apps”. -->
+    <string name="setup_steps">1. Tap the button below.\n2. Open “Installed apps” or “Downloaded apps”.\n3. Choose Mareco and switch it on.\n4. Come back here.</string>
+    <string name="setup_open_settings">Open Android Settings</string>
+    <string name="setup_after">After enabling the permission:</string>
+    <string name="setup_why_title">What the permission is for</string>
+    <string name="setup_why_a11y">Accessibility service: the only way Android lets an app tap and swipe for you. Mareco uses it to draw the floating controls, to put an invisible layer on screen while you record, and to replay your gestures. It cannot read your screen, your passwords or your messages.</string>
+    <string name="setup_why_keys">Button presses: only while recording or running, so Mareco can record Back / Home / Recents and notice the Volume Up + Volume Down emergency stop. Typed text is never stored.</string>
+    <string name="setup_why_app">Which app is in front: used only for the optional “Only run while this app is open” safety.</string>
+    <string name="setup_no_internet">Mareco has no internet permission at all, so nothing can leave your phone.</string>
+    <string name="setup_grey_title">The switch is greyed out?</string>
+    <!-- Use the names Android itself uses in your language for “Allow restricted settings”. -->
+    <string name="setup_grey_body">Android 13 and newer block sideloaded apps from using accessibility until you allow it:\n1. Tap “Open App info”.\n2. Tap the three dots at the top right.\n3. Choose “Allow restricted settings” and confirm.\n4. Go back and enable the service.</string>
+    <string name="setup_open_app_info">Open App info</string>
+    <string name="setup_keep_title">Keep it running</string>
+    <string name="setup_keep_body">For long sessions set Mareco’s battery usage to “Unrestricted” (App info → Battery) and keep the charger connected. While a macro runs Mareco keeps the screen on.</string>
+
+    <!-- ===== Help screen ===== -->
+    <string name="help_title">Help and limitations</string>
+    <string name="help_bar_title">The floating bar</string>
+    <string name="help_bar_play">Blue ● / ▶ button: starts recording (Record mode) or runs your macro (Start mode). While recording or running it becomes ■: press it to stop. After a recording it asks you to name and save it.</string>
+    <string name="help_bar_hold">Hold the blue button: pause or resume (while recording or running), or stop (while paused).</string>
+    <string name="help_bar_gear">Gear: choose Record macro or Start macro mode, pick your default macro, change its execution settings and every other setting.</string>
+    <string name="help_bar_move">Four arrows: drag the bar anywhere. X: close the bar (open it again from the app). Long-press a button to see its name.</string>
+    <string name="help_flow_title">Record, stop, configure, execute</string>
+    <string name="help_flow_body">1. In Mareco, press Start Recording. The floating bar appears.\n2. Open your game.\n3. Press the blue ● when you are ready.\n4. Do your actions normally.\n5. Press ■ and give the macro a name.\n6. Gear → Start macro, tune the execution settings and press ▶.\nStop any time with ■, the STOP button in the app, or Volume Up + Volume Down together.</string>
+    <string name="help_live_title">Live and Plan recording</string>
+    <string name="help_live_body">Live (default): Mareco records your touches and replays each gesture to the app right after you lift your finger, so the game reacts while you record.</string>
+    <string name="help_plan_body">Plan: touches are only recorded; the app does not react. Use it if Live causes trouble.</string>
+    <string name="help_limits_title">What Android does not allow</string>
+    <string name="help_limit_1">• An app cannot watch touches that go to another app. That is why recording uses a transparent layer and replays your gestures. A new touch in the split second while a gesture is being replayed can be missed, so avoid extremely fast repeated taps while recording, or use Plan mode.</string>
+    <string name="help_limit_2">• Some screens block automated gestures: password fields, banking apps and apps that block accessibility tools.</string>
+    <string name="help_limit_3">• Only Back, Home and Recents can be recorded as button presses. Volume, camera and other keys cannot be replayed.</string>
+    <string name="help_limit_4">• Nothing runs while the screen is off or locked. Mareco keeps the screen on during a macro and stops if it turns off.</string>
+    <string name="help_limit_5">• Record and replay in the same orientation. If the screen size differs, Mareco scales coordinates and warns you.</string>
+    <string name="help_limit_6">• Android may stop apps in the background to save battery. Set Mareco’s battery usage to Unrestricted for long sessions.</string>
+    <string name="help_privacy_title">Privacy</string>
+    <string name="help_privacy_body">Mareco has no internet permission. Macros are .mareco files stored privately on your phone; you choose when to share one.</string>
+
+    <!-- ===== My Macros ===== -->
+    <string name="macros_title">My Macros</string>
+    <string name="macros_new">+ New recording</string>
+    <string name="macros_import">Import</string>
+    <string name="macros_empty">No macros yet.\n\nTap “New recording”, open your game and press the blue ● on the floating bar. When you are done, press ■ and name it. Your macro appears here.</string>
+    <!-- %s = macro name -->
+    <string name="share_title">Share “%s”</string>
+    <string name="share_send_app">Send to another app…</string>
+    <string name="share_save_file">Save as a .mareco file…</string>
+    <string name="share_chooser">Share macro</string>
+    <string name="row_default">DEFAULT</string>
+    <string name="row_never">Never executed</string>
+    <!-- %1$s = number of runs (the × sign means “times”), %2$s = total run time like 2 min 5 s -->
+    <string name="row_executed">Executed %1$s× (%2$s)</string>
+    <!-- %1$s = number of steps, %2$s = time like 3 s -->
+    <string name="row_detail">Steps: %1$s · %2$s per loop</string>
+    <!-- [group] Names of the small icon buttons (for screen readers) -->
+    <string name="cd_settings">Execution settings</string>
+    <string name="cd_edit">Edit</string>
+    <string name="cd_duplicate">Duplicate</string>
+    <string name="cd_run">Run</string>
+    <string name="cd_up">Move up</string>
+    <string name="cd_down">Move down</string>
+    <string name="cd_add_wait">Add a wait</string>
+    <string name="cd_add_step">Add a step</string>
+
+    <!-- ===== Macro editor ===== -->
+    <string name="editor_title">Edit macro</string>
+    <string name="editor_gone">This macro no longer exists.</string>
+    <!-- %1$s = number of steps, %2$s = loop length like 3 s, %3$s = how often it was executed -->
+    <string name="editor_stats">Steps: %1$s · Loop: %2$s · %3$s</string>
+    <!-- %s = screen size like 1080 × 2400 -->
+    <string name="editor_recorded">Recorded on %s</string>
+    <!-- %1$s = screen size, %2$s = app name -->
+    <string name="editor_recorded_in">Recorded on %1$s in %2$s</string>
+    <!-- %1$s and %2$s are date and time -->
+    <string name="editor_dates">Created %1$s · Modified %2$s</string>
+    <string name="editor_hint">Tap a step to select it · long-press to edit</string>
+    <string name="editor_edit_desc">Edit description</string>
+    <string name="editor_clear_all">Clear all</string>
+    <string name="editor_add_step">Add step</string>
+    <string name="editor_clear_title">Clear all steps?</string>
+    <string name="editor_clear_msg">Every step of this macro will be removed. This cannot be undone.</string>
+    <!-- [group] Kinds of steps -->
+    <string name="step_tap">Tap</string>
+    <string name="step_long_press">Long press</string>
+    <string name="step_swipe">Swipe</string>
+    <string name="step_drag">Drag</string>
+    <string name="step_multi">Multi-touch</string>
+    <string name="step_key">System button</string>
+    <string name="step_wait">Wait</string>
+    <string name="step_back_btn">Back button</string>
+    <string name="step_home_btn">Home button</string>
+    <string name="step_recents_btn">Recent apps button</string>
+    <!-- [group] One-line summaries. %s / %1$s / %2$s are coordinates like (540, 1200) or a time like 2 s -->
+    <string name="sum_tap">Tap %s</string>
+    <string name="sum_long_press">Long press %1$s · %2$s</string>
+    <string name="sum_swipe">Swipe %1$s → %2$s</string>
+    <!-- %3$s = number of points of the path -->
+    <string name="sum_drag">Drag %1$s → %2$s · Points: %3$s</string>
+    <!-- %1$s = number of fingers -->
+    <string name="sum_multi">Multi-touch · Fingers: %1$s · %2$s</string>
+    <!-- %s = a button name from the list below -->
+    <string name="sum_key">Press %s</string>
+    <string name="sum_wait">Wait %s</string>
+    <!-- [group] System buttons of Android -->
+    <string name="key_back">Back</string>
+    <string name="key_home">Home</string>
+    <string name="key_recents">Recent apps</string>
+    <string name="key_notifications">Notification shade</string>
+    <string name="key_quick_settings">Quick settings</string>
+    <string name="key_generic">button</string>
+
+    <!-- ===== Execution settings dialog ===== -->
+    <string name="exec_default_title">Default execution settings</string>
+    <string name="exec_stop_condition">Stop condition</string>
+    <string name="exec_stop_infinite">Infinitely until stopped</string>
+    <string name="exec_stop_count">Specified number of times</string>
+    <string name="exec_stop_time">Run for a set time</string>
+    <string name="exec_executions">Executions</string>
+    <string name="exec_run_for">Run for</string>
+    <string name="exec_loop_interval">Loop interval</string>
+    <string name="exec_speed">Execution speed</string>
+    <string name="speed_slow">Slow</string>
+    <string name="speed_normal">Normal</string>
+    <string name="speed_fast">Fast</string>
+    <string name="speed_custom_dots">Custom…</string>
+    <string name="exec_custom_speed">Custom speed</string>
+    <string name="exec_other">Other</string>
+    <string name="exec_auto_title">Auto-execute upon starting the device</string>
+    <string name="exec_auto_sub">Starts this macro about 20 seconds after the phone boots, with a countdown you can cancel.</string>
+    <string name="exec_sim_title">Simulate execution: mimic real click behavior</string>
+    <string name="exec_sim_sub">Replays the original press times and finger paths as closely as possible.</string>
+    <!-- %s = name of an app -->
+    <string name="exec_lock_title">Only run while %s is open</string>
+    <string name="exec_lock_sub">If you leave the app, Mareco waits up to 30 seconds for it to come back, then stops.</string>
+    <string name="exec_more">More options</string>
+    <string name="exec_delay_mode">Action delay</string>
+    <string name="delay_original">Original (as recorded)</string>
+    <string name="exec_delay_custom">Custom delay between actions</string>
+    <string name="exec_random">Randomized delay</string>
+    <string name="exec_random_sub">Varies every delay a little, for example 1000 ms ± 200 ms.</string>
+    <string name="exec_random_range">Random range (±)</string>
+    <string name="exec_humanize">Humanize taps</string>
+    <string name="exec_humanize_sub">Moves each tap by a few random pixels so no two taps are identical.</string>
+    <string name="exec_humanize_px">Tap offset (± pixels)</string>
+    <string name="exec_scaling">Coordinate scaling</string>
+    <string name="scale_original">Original coordinates</string>
+    <string name="scale_scale">Scale to current screen</string>
+    <string name="scale_aspect">Preserve aspect ratio</string>
+    <!-- %1$s and %2$s are screen sizes like 1080 × 2400 -->
+    <string name="exec_device_info">Recorded on %1$s. This screen: %2$s.</string>
+
+    <!-- ===== Step editor dialog ===== -->
+    <!-- %s = kind of step, for example Tap -->
+    <string name="ae_add">Add step: %s</string>
+    <string name="ae_edit">Edit step: %s</string>
+    <string name="ae_x">X position</string>
+    <string name="ae_y">Y position</string>
+    <string name="ae_press_time">Press time</string>
+    <string name="ae_start_x">Start X</string>
+    <string name="ae_start_y">Start Y</string>
+    <string name="ae_end_x">End X</string>
+    <string name="ae_end_y">End Y</string>
+    <string name="ae_swipe_time">Swipe time</string>
+    <string name="ae_drag_time">Drag time</string>
+    <!-- %s = number of points -->
+    <string name="ae_drag_info">A curved finger path with %s points. Its shape is kept as recorded.</string>
+    <!-- %s = number of fingers -->
+    <string name="ae_multi_info">A gesture with %s fingers. Its shape is kept as recorded.</string>
+    <string name="ae_key_label">Button</string>
+    <string name="ae_delay_before">Delay before this step</string>
+
+    <!-- ===== Settings ===== -->
+    <string name="set_appearance">Appearance</string>
+    <string name="set_language">Language</string>
+    <string name="set_language_sub">Mareco follows your phone’s language unless you choose one here.</string>
+    <!-- First entry of the language list: use the language of the phone -->
+    <string name="lang_system">System default</string>
+    <string name="set_theme">Theme</string>
+    <string name="theme_system">Follow system</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="set_haptics">Haptic feedback</string>
+    <string name="set_haptics_sub">A short vibration when recording or a macro starts and stops.</string>
+    <string name="set_floating">Floating controls</string>
+    <string name="set_size">Size</string>
+    <string name="size_small">Small</string>
+    <string name="size_medium">Medium</string>
+    <string name="size_large">Large</string>
+    <string name="set_opacity">Opacity</string>
+    <string name="set_restore">Bring the controls back automatically</string>
+    <string name="set_restore_sub">After the accessibility service restarts or the phone reboots.</string>
+    <string name="set_reset_pos">Reset position</string>
+    <string name="set_recording">Recording</string>
+    <string name="set_style">Style</string>
+    <string name="style_live">Live</string>
+    <string name="style_plan">Plan</string>
+    <string name="set_style_help">Live: your touches also reach the app, so you can use it normally while recording. Plan: touches are only recorded and the app does not react.</string>
+    <string name="set_rec_keys">Record Back / Home / Recents</string>
+    <string name="set_rec_keys_sub">Presses of these buttons become steps in the macro.</string>
+    <string name="set_rec_markers">Show touch markers</string>
+    <string name="set_rec_markers_sub">Draws a dot and a trail where you touch while recording.</string>
+    <string name="set_rec_countdown">Countdown before recording</string>
+    <string name="set_playback">Playback</string>
+    <string name="set_run_countdown">Countdown before a macro starts</string>
+    <string name="set_keep_on">Keep the screen on while running</string>
+    <string name="set_keep_on_sub">Prevents the screen from timing out during a macro.</string>
+    <string name="set_run_markers">Show touch markers while running</string>
+    <string name="set_run_markers_sub">Shows where each tap lands. Can use a little more battery.</string>
+    <string name="set_default_exec">Default settings for new recordings…</string>
+    <string name="set_safety">Safety</string>
+    <string name="set_confirm_inf">Ask before running forever</string>
+    <string name="set_confirm_inf_sub">Shows a reminder before a macro that never stops.</string>
+    <string name="set_stop_screen_off">Stop when the screen turns off</string>
+    <string name="set_vol_stop">Volume Up + Volume Down = emergency stop</string>
+    <string name="set_vol_stop_sub">Press both volume buttons together to stop a running macro at once.</string>
+    <string name="set_max_time">Maximum run time (0 = no limit)</string>
+    <string name="set_max_exec">Maximum executions (0 = no limit)</string>
+    <string name="set_stop_battery">Stop when the battery is below (0 = off)</string>
+    <string name="set_permissions">Permissions</string>
+    <string name="perm_on">Accessibility service is on.</string>
+    <string name="perm_off">Accessibility service is off.</string>
+    <string name="perm_open_guide">Open the setup guide</string>
+    <string name="set_about">About</string>
+    <!-- %s = version number like 1.1.0 -->
+    <string name="about_text">Mareco %s\nFree, no ads, no internet access. Your macros stay on this phone as .mareco files.</string>
+
+    <!-- ===== Settings panel opened from the gear button of the floating bar ===== -->
+    <string name="ov_title">Mareco · Settings</string>
+    <string name="ov_mode">Mode</string>
+    <!-- The two tabs of the mode switch (also used as the name of a button). Keep them short. -->
+    <string name="ov_mode_record">● Record macro</string>
+    <!-- The two tabs of the mode switch (also used as the name of a button). Keep them short. -->
+    <string name="ov_mode_start">▶ Start macro</string>
+    <string name="ov_record_help">Record macro mode: press the blue ● button, do your actions in the app, then press the blue ■ button to finish. You will be asked for a name, just like in an emulator’s operation recorder.</string>
+    <string name="ov_start_rec">● Start recording</string>
+    <string name="ov_start_help_none">Start macro mode runs a saved macro. You have no macro selected yet: switch to Record macro mode and record one, or pick an existing one.</string>
+    <string name="ov_choose">Choose a macro…</string>
+    <string name="ov_default_label">Default macro (change its settings, then press play):</string>
+    <string name="ov_change">Change macro…</string>
+    <string name="ov_chooser_title">Choose macro</string>
+    <string name="ov_chooser_help">Tap a name to make it the default. Tap the blue play button to run it now.</string>
+    <string name="ov_none_yet">No macros yet.</string>
+
+    <!-- ===== Crash screens (only shown if something goes wrong) ===== -->
+    <string name="err_screen">This screen could not be shown.</string>
+    <string name="crash_last_title">Mareco crashed last time</string>
+    <string name="crash_send_hint">Send this text to the developer so it can be fixed:</string>
+    <string name="crash_title">Mareco crashed</string>
+    <string name="crash_hint">Tap Copy (or Share) and send this text to the developer. It tells exactly what went wrong.</string>
+    <string name="crash_no_details">No details were saved.</string>
+    <string name="crash_share_title">Share crash details</string>
+
+</resources>

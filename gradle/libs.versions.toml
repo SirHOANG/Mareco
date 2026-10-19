@@ -1,0 +1,13 @@
+[versions]
+# Android Gradle Plugin 9.1.0 (Matched to your current Android Studio version).
+# It needs Gradle 9.3.1 (see gradle/wrapper/gradle-wrapper.properties) and JDK 17+.
+agp = "9.1.0"
+junit = "4.13.2"
+orgJson = "20240303"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+org-json = { group = "org.json", name = "json", version.ref = "orgJson" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
