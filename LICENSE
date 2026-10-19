@@ -1,0 +1,88 @@
+MARECO PROPRIETARY SOFTWARE LICENSE
+Copyright (c) 2026 SirHOANG. All Rights Reserved.
+
+PROJECT
+-------
+Mareco - Mobile Operation Recorder
+Repository: https://github.com/SirHOANG/Mareco
+
+AUTHORSHIP AND OWNERSHIP
+------------------------
+This license applies to original code, documentation, and assets in the
+Mareco project that are owned by SirHOANG. Third-party components remain
+subject to their own applicable licenses.
+
+1. ALL RIGHTS RESERVED
+----------------------
+All rights to the original Mareco project are reserved by the author unless
+permission is expressly granted in writing.
+
+Public availability on GitHub does not, by itself, grant permission to copy,
+modify, redistribute, republish, or commercially exploit the original
+project.
+
+2. PERMISSION REQUIRED
+----------------------
+Without prior written permission from SirHOANG, you may not:
+
+- Copy or redistribute the original source code.
+- Publish modified or derivative versions of the project.
+- Repackage, resell, or commercially distribute the application.
+- Claim authorship or ownership of the original project.
+- Use the original project as the basis of another distributed product.
+
+Viewing the repository through GitHub is permitted.
+
+3. REQUESTING PERMISSION
+------------------------
+To request permission to use, modify, contribute to, or redistribute Mareco,
+contact the author through the Discord community:
+
+https://discord.gg/q3fFj7ZKsu
+
+Joining the Discord server does not automatically grant permission. The
+author must explicitly grant permission.
+
+4. CONTRIBUTORS
+----------------
+Unless a separate written agreement states otherwise, contributors retain
+rights to their own contributions and grant only the permissions they are
+legally entitled to grant. Contributions do not automatically transfer
+ownership of the entire project to the author.
+
+5. THIRD-PARTY COMPONENTS
+-------------------------
+Third-party libraries, dependencies, assets, and tools may be governed by
+separate licenses. Those licenses continue to apply to their respective
+components. This license does not remove rights granted by third-party
+licenses.
+
+6. NO WARRANTY
+--------------
+To the maximum extent permitted by applicable law, the project is provided
+"AS IS", without warranties of any kind, express or implied. The author does
+not guarantee that the software will be error-free, compatible with every
+device, or suitable for every purpose.
+
+7. LIMITATION OF LIABILITY
+--------------------------
+To the maximum extent permitted by applicable law, the author is not liable
+for claims or damages arising from use of, or inability to use, the project,
+except where liability cannot legally be excluded.
+
+8. APPLICABLE LAW
+-----------------
+This license is subject to applicable law. Any provision that cannot be
+enforced under applicable law shall be limited to the extent necessary,
+without invalidating the remaining provisions.
+
+9. CONTACT
+----------
+Project author: SirHOANG
+GitHub: https://github.com/SirHOANG/Mareco
+Discord: https://discord.gg/q3fFj7ZKsu
+
+For permission requests, questions, or licensing discussions, contact the
+author through the Discord community.
+
+END OF LICENSE
